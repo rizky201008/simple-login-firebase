@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "432888176560",
+    "project_id": "simple-login-36497",
+    "storage_bucket": "simple-login-36497.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432888176560:android:90d47641f3e187df404075",
+        "android_client_info": {
+          "package_name": "com.vixiloc.simplelogin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQynwWO0ORg_wQ7AX8gR7uW-m6ag9xbmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

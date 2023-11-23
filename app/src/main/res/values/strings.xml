@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simple Login</string>
+    <string name="email_blank_error">Email is required</string>
+    <string name="email_invalid_error">Email is invalid</string>
+    <string name="password_length_error">Password require minimum 9 character</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+</resources>
