@@ -12,6 +12,11 @@ class LoginUseCase(private val repo: Auth) {
     operator fun invoke(userCredential: UserCredential): Flow<Resource<LoginResponse>> = flow {
         emit(Resource.Loading())
         val response = repo.login(userCredential).toLoginResponse()
-        emit(Resource.Success(data = response))
+        val message = response.message
+        if (message == "success") {
+            emit(Resource.Success(data = response))
+        } else {
+            emit(Resource.Error(message = message))
+        }
     }
 }
