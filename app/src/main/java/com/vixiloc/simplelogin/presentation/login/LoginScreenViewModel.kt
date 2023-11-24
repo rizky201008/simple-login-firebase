@@ -58,11 +58,11 @@ class LoginScreenViewModel(
             )
             return
         } else {
-            loginFirebase(email = state.email, password = state.password)
             state = state.copy(
                 emailError = null,
                 passwordError = null,
             )
+            loginFirebase(email = state.email, password = state.password)
         }
     }
 
@@ -79,7 +79,7 @@ class LoginScreenViewModel(
                 }
 
                 is Resource.Loading -> {
-                    loginEventChannel.send(LoginEvent.Error)
+                    loginEventChannel.send(LoginEvent.Loading)
                 }
             }
         }.launchIn(viewModelScope)

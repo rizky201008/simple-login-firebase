@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class HomeScreenViewModel(firebaseAuth: FirebaseAuth) : ViewModel() {
-    val user_fb = firebaseAuth.currentUser
+class HomeScreenViewModel() : ViewModel() {
+
 }
