@@ -1,5 +1,7 @@
 package com.vixiloc.simplelogin.presentation.login
 
+import android.app.Activity
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,14 +22,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.vixiloc.simplelogin.R
 import com.vixiloc.simplelogin.presentation.route.MainRoute
+import com.vixiloc.simplelogin.presentation.utils.PerformLifecycle
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,6 +47,21 @@ fun LoginScreen(
 ) {
     val state = viewModel.state
     val context = LocalContext.current
+    var auth: FirebaseAuth = Firebase.auth
+    val scope = rememberCoroutineScope()
+    val lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
+
+    PerformLifecycle(
+        lifecycleOwner = lifecycleOwner,
+        onStart = {
+            scope.launch {
+                if (auth.currentUser !== null) {
+                    navController.popBackStack()
+                    navController.navigate(MainRoute.HomeScreen.route)
+                }
+            }
+        },
+    )
 
     LaunchedEffect(key1 = context) {
         viewModel.loginEvents.collect { event ->
