@@ -10,7 +10,7 @@ import com.vixiloc.simplelogin.presentation.route.MainRoute
 
 @Composable
 fun MainNav(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = MainRoute.HomeScreen.route) {
+    NavHost(navController = navController, startDestination = MainRoute.LoginScreen.route) {
         composable(MainRoute.HomeScreen.route) {
             HomeScreen(navController = navController)
         }
