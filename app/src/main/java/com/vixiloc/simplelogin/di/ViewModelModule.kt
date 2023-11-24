@@ -10,6 +10,6 @@ val viewModelModules = module {
         LoginScreenViewModel(login = get(), validateEmail = get(), validatePassword = get())
     }
     viewModel {
-        HomeScreenViewModel(firebaseAuth = get())
+        HomeScreenViewModel()
     }
 }
